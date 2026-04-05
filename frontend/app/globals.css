@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --background: #080c14;
+  --foreground: #dce5f3;
+  --panel: #0d1422;
+  --panel-2: #101a2b;
+  --grid-major: rgba(140, 180, 255, 0.12);
+  --grid-minor: rgba(140, 180, 255, 0.05);
+  --accent: #66d1ff;
+  --danger: #ff5f6d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-display);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--foreground);
+  background: linear-gradient(to bottom, #080c14, #05080f);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--font-display), sans-serif;
+  position: relative;
+}
+
+body::before {
+  content: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+  background-size: 72px 72px, 72px 72px, 18px 18px, 18px 18px;
+  background-position: -1px -1px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@keyframes topology-link-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes topology-link-pulse-offline {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.topology-link-online {
+  stroke: #4ade80;
+  animation: topology-link-pulse 1.6s ease-in-out infinite;
+}
+
+.topology-link-offline {
+  stroke: #f87171;
+  animation: topology-link-pulse-offline 1.8s ease-in-out infinite;
+}
