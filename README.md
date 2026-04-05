@@ -28,3 +28,4 @@ OPENROUTER_TIMEOUT_SECONDS=90
 ## frontend
 
 из директории `frontend` `npm install` -> `npm run dev`
+вход в интерфейс сейчас по admin-admin
